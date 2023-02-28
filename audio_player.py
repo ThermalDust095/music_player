@@ -7,7 +7,7 @@ q = []
 
 def play():
     print("Audio Playing....")
-    AudioPlayer(q[0]).play(block=True)
+    AudioPlayer(q[0]).play(loop=False,block=True)
     q.pop(0)
         
 
@@ -15,7 +15,7 @@ def queue(i):
     q.append(song_list[i-1])
     print(q)
 
-print('''
+print('''-
 1. Swif7 - Six Feet Under
 2. 
 ''')
