@@ -16,7 +16,7 @@ def queue(i):
     print(q)
 
 print('''
-1. Swf7 - Six Feet Under
+1. Swif7 - Six Feet Under
 2. 
 ''')
 
