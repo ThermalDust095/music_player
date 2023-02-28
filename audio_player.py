@@ -1,32 +1,42 @@
 from audioplayer import AudioPlayer
-from tinytag import TinyTag
+import pygame
+import time
+from playsound import playsound
 
-
-song_list = [r"C:\Users\akhil\OneDrive - dsatm.edu.in\Documents\Akhil\Java\music_player\music.mp3"]
+song_list = [r"C:\Users\akhil\OneDrive - dsatm.edu.in\Documents\Akhil\Java\music_player\music.mp3",""]
 q = []
 
 
+def load(music_file):
+    if music_file == None:
+        print("No music to play :(")
+        return
+    
+    pygame.mixer.music.load(music_file)
+
 def play():
-    if(q):
-        print("Audio Playing....")
-        tag = TinyTag.get(q[0])
-        AudioPlayer(q[0]).play(loop=False,block=True)
-        q.pop(0)
-    else:
-        print("Q is Empty")
-        
+    pygame.mixer.music.play()
+
+    while pygame.mixer.music.get_busy(): 
+        print()
+        a = input("Give:") 
+        time.sleep(1) 
+    
+    q[0].pop()
+    pygame.mixer.music.load(q[0])
+
+def pause_music(): 
+    pygame.mixer.music.pause()
+
+def resume_music():
+    pygame.mixer.unpause() 
 
 def queue(i):
-    q.append(song_list[i-1])
-    print(q)
+    q.append(i)
 
-print('''-
-1. Swif7 - Six Feet Under
-2. 
-''')
+def menu():
+    return '''1)Queue
+2)Pause
+3)Resume
+4)'''
 
-choice = int(input("which song: "))
-
-
-queue(choice)
-play()
